@@ -133,7 +133,7 @@
             <a href="/" class="nav-link relative">Accueil</a>
             <a href="/audit" class="nav-link relative underline underline-offset-4">Audit</a>
             <a href="/demos" class="nav-link relative">Démos</a>
-            <a href="https://calendly.com/moezevidenss/30min" target="_blank" rel="noopener noreferrer" class="nav-link relative">Briefing</a>
+            <a href="https://calendly.com/azizbenhassine270/audit-ia-gratuit" target="_blank" rel="noopener noreferrer" class="nav-link relative">Briefing</a>
         </div>
     </nav>
 
@@ -235,9 +235,6 @@
                         <a href="#" id="btn-reserver" class="cta-btn flex items-center justify-between bg-white text-[#0a0a0a] px-6 py-4 text-[9px] font-black uppercase tracking-[0.25em] w-full mb-3">
                             <span class="italic">Réserver l'audit — 30 min</span>
                             <span class="mono text-lg">→</span>
-                        </a>
-                        <a href="#" id="btn-expert" class="cta-btn flex items-center justify-between border border-white/20 text-white px-6 py-4 text-[9px] font-black uppercase tracking-[0.25em] w-full">
-                            <span>Chiffrer mes fonctions avec un expert</span>
                         </a>
                         <p class="text-[9px] text-neutral-500 mt-4 leading-relaxed">
                             Audit de 30 min · visio · gratuit · sans engagement
@@ -359,8 +356,8 @@
                 </p>
             </div>
             <div class="flex flex-col items-center gap-3" data-aos="fade-up" data-aos-delay="200">
-                <a href="#" id="btn-expert-2" class="cta-btn bg-[#0a0a0a] text-white px-10 md:px-16 py-6 text-[10px] font-black uppercase tracking-[0.3em]">
-                    <span class="italic">Chiffrer mes fonctions avec un expert</span>
+                <a href="#" id="btn-reserver-bottom" class="cta-btn bg-[#0a0a0a] text-white px-10 md:px-16 py-6 text-[10px] font-black uppercase tracking-[0.3em]">
+                    <span class="italic">Réserver l'audit — 30 min</span>
                 </a>
                 <p class="mono text-[10px] text-neutral-400">30 min · visio · gratuit</p>
             </div>
@@ -380,7 +377,7 @@
         // ============================================================
         // CONFIG
         // ============================================================
-        const CALENDLY_URL = 'https://calendly.com/moezevidenss/30min';
+        const CALENDLY_URL = 'https://calendly.com/azizbenhassine270/audit-ia-gratuit';
         const API_URL = '/api/audit';
 
         // Hypothèses de l'estimation
@@ -543,7 +540,7 @@
             recalcule();
             const payload = auditPayload();
 
-            const btns = document.querySelectorAll('#btn-reserver, #btn-expert, #btn-expert-2');
+            const btns = document.querySelectorAll('#btn-reserver, #btn-reserver-bottom');
             btns.forEach(b => { b.style.opacity = '0.55'; b.style.pointerEvents = 'none'; });
 
             window.open(CALENDLY_URL, '_blank');
@@ -572,9 +569,8 @@
             document.getElementById('input-effectif').addEventListener('input', recalcule);
             document.getElementById('input-ca').addEventListener('input', recalcule);
             document.getElementById('input-secteur').addEventListener('change', recalcule);
-            document.getElementById('btn-reserver').addEventListener('click', envoyerEtReserver);
-            document.getElementById('btn-expert').addEventListener('click', envoyerEtReserver);
-            document.getElementById('btn-expert-2').addEventListener('click', envoyerEtReserver);
+document.getElementById('btn-reserver').addEventListener('click', envoyerEtReserver);
+document.getElementById('btn-reserver-bottom').addEventListener('click', envoyerEtReserver);
         }
 
         // ============================================================

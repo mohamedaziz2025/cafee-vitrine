@@ -146,7 +146,7 @@ function buildHtml(payload) {
           <tr>
             <td>
               <a href="${
-                payload.calendly || 'https://calendly.com/moezevidenss/30min'
+                payload.calendly || 'https://calendly.com/azizbenhassine270/audit-ia-gratuit'
               }" target="_blank" style="display:inline-block;background:#0a0a0a;color:#fff;text-decoration:none;font-weight:bold;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:16px 28px;">
                 Voir le créneau choisi →
               </a>
@@ -198,7 +198,7 @@ app.post('/api/audit', async (req, res) => {
           (f) => `- ${f.nom} (${fmtH(f.heuresSem)} h/sem) : ${f.choix}`
         ),
         '',
-        `Calendly : ${payload.calendly || 'https://calendly.com/moezevidenss/30min'}`,
+        `Calendly : ${payload.calendly || 'https://calendly.com/azizbenhassine270/audit-ia-gratuit'}`,
       ].join('\n'),
     });
 
