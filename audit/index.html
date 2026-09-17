@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafee Agency | L'Audit — Fonctions Support</title>
+    <title>Cafee Agency | Audit — Fonctions Support</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -78,46 +78,28 @@
         }
         .nav-link:hover::after { width: 100%; }
 
-        .func-card {
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            background-color: #ffffff;
-        }
-        .func-card:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-        }
-        .choice-btn {
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid #0a0a0a;
-            color: #0a0a0a;
-        }
-        .choice-btn:hover:not(.active) {
-            background-color: #f0f0f0;
-        }
-        .choice-btn.active {
-            background-color: #0a0a0a;
-            color: #ffffff;
-        }
         .cta-btn {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .cta-btn:hover { transform: scale(1.03); }
         .cta-btn:active { transform: scale(0.97); }
 
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
+        .page-card {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        input[type=number] { -moz-appearance: textfield; }
-
-        .field {
-            background: transparent;
-            border: 1px solid #0a0a0a;
-            outline: none;
+        .page-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+        }
+        .tag {
             transition: all 0.3s ease;
         }
-        .field:focus { background: #ffffff; box-shadow: 0 0 0 1px #0a0a0a; }
-        select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%230a0a0a' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+        .page-card:hover .tag { background-color: #0a0a0a; color: #ffffff; }
+
+        .friction-item {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .friction-item:hover { background-color: #ffffff; transform: translateX(6px); }
     </style>
 </head>
 <body>
@@ -137,229 +119,203 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="min-h-screen flex flex-col justify-center px-6 md:px-24 relative">
+    <!-- HERO -->
+    <section class="min-h-screen flex flex-col justify-center px-6 md:px-24 py-24">
         <div class="max-w-screen-2xl mx-auto w-full">
             <div data-aos="fade-up" data-aos-duration="1500">
-                <p class="mono text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] text-neutral-400 mb-8">Audit — 30 min · gratuit · sans engagement</p>
-                <h1 class="text-[11vw] md:text-[7vw] font-black leading-[0.9] tracking-tighter uppercase italic max-w-6xl">
-                    Combien d'EBITDA dort dans vos <span class="text-outline">fonctions support</span> ?
+                <p class="mono text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] text-neutral-400 mb-8">Audit — Fonctions Support</p>
+                <h1 class="text-[8vw] md:text-[5.5vw] font-black leading-[0.92] tracking-tighter uppercase italic">
+                    Vos fonctions support vous coûtent plus <span class="text-outline">qu'elles ne devraient</span>.
                 </h1>
             </div>
+
             <div class="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8 border-t border-black/10 pt-10" data-aos="fade-up" data-aos-delay="400">
                 <div class="md:col-span-7">
-                    <p class="text-[9px] font-black uppercase tracking-[0.5em] mb-4 text-neutral-400">Le test — 30 secondes, sans email</p>
-                    <p class="text-sm md:text-base font-medium leading-relaxed max-w-2xl">
-                        Chaque fonction support de votre PME a trois destins : la <strong>garder</strong>, l'<strong>externaliser</strong>, ou l'<strong>automatiser</strong>.
-                        Le bon arbitrage se lit en euros. Faites le test.
+                    <p class="text-sm md:text-base font-medium leading-relaxed max-w-2xl mb-8">
+                        CAFEE identifie ce qui doit être conservé, externalisé ou automatisé — puis chiffre le potentiel réel.
+                    </p>
+                    <div class="mono text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-500 grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                        <div>30 minutes.</div>
+                        <div>Vos outils actuels.</div>
+                        <div>Vos vrais volumes.</div>
+                    </div>
+                </div>
+                <div class="md:col-start-9 md:col-span-4 text-left md:text-right flex flex-col items-start md:items-end gap-4">
+                    <a href="/audit/formulaire" class="cta-btn inline-block bg-[#0a0a0a] text-white px-8 md:px-10 py-5 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] md:tracking-[0.3em]">
+                        Chiffrer mes fonctions avec un expert <span class="italic">→</span>
+                    </a>
+                    <a href="https://calendly.com/azizbenhassine270/audit-ia-gratuit" target="_blank" rel="noopener noreferrer" id="btn-reserver" class="cta-btn inline-block border border-black px-8 md:px-10 py-5 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] md:tracking-[0.3em]">
+                        Réserver l'audit — 30 min
+                    </a>
+                    <p class="mono text-[9px] text-neutral-400 uppercase tracking-[0.2em]">Audit gratuit · 30 min · Sans engagement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LE PROBLÈME -->
+    <section class="bg-white py-24 md:py-40 px-6 md:px-24">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-16 md:gap-24 items-start">
+                <div class="md:w-2/5" data-aos="fade-right">
+                    <p class="mono text-[10px] font-bold uppercase tracking-[0.5em] text-neutral-400 mb-6">Le problème</p>
+                    <div class="grid grid-cols-1 gap-3 max-w-md">
+                        <p class="friction-item border border-black/10 px-6 py-5 text-sm md:text-base font-bold uppercase tracking-tight">Factures à saisir.</p>
+                        <p class="friction-item border border-black/10 px-6 py-5 text-sm md:text-base font-bold uppercase tracking-tight">Emails à trier.</p>
+                        <p class="friction-item border border-black/10 px-6 py-5 text-sm md:text-base font-bold uppercase tracking-tight">Devis à préparer.</p>
+                        <p class="friction-item border border-black/10 px-6 py-5 text-sm md:text-base font-bold uppercase tracking-tight">Documents à classer.</p>
+                        <p class="friction-item border border-black/10 px-6 py-5 text-sm md:text-base font-bold uppercase tracking-tight">Relances à effectuer.</p>
+                        <p class="friction-item border border-black/10 px-6 py-5 text-sm md:text-base font-bold uppercase tracking-tight">Tableaux à mettre à jour.</p>
+                    </div>
+                </div>
+                <div class="md:w-3/5 pt-0 md:pt-12" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.92] italic mb-10">
+                        Votre équipe ne devrait pas passer ses journées à faire ce qu'un <span class="text-outline">système</span> peut faire.
+                    </h2>
+                    <p class="text-neutral-500 font-medium leading-relaxed max-w-xl mb-6">
+                        Ces tâches semblent anodines.
+                    </p>
+                    <p class="text-neutral-500 font-medium leading-relaxed max-w-xl mb-10">
+                        Additionnées sur 12 mois, elles représentent des centaines d'heures.
+                    </p>
+                    <p class="text-base md:text-lg font-bold text-[#0a0a0a] italic leading-relaxed max-w-xl">
+                        CAFEE transforme ces opérations répétitives en systèmes capables de travailler avec vos outils existants.
                     </p>
                 </div>
-                <div class="md:col-start-9 md:col-span-4 text-left md:text-right">
-                    <a href="#simulateur" class="cta-btn inline-block bg-[#0a0a0a] text-white px-8 py-4 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em]">
-                        Lancer le test <span class="italic">→</span>
-                    </a>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Simulateur -->
-    <section id="simulateur" class="py-24 md:py-40 px-6 md:px-24 bg-white">
-        <div class="max-w-screen-2xl mx-auto">
-            <div class="flex flex-col gap-6 mb-16 md:mb-20" data-aos="fade-up">
-                <p class="mono text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400">Simulateur — vos chiffres</p>
-                <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] italic max-w-4xl">
-                    Trois destins pour chaque fonction.
-                    <span class="text-outline">Quel arbitrage ?</span>
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-                <!-- Colonne fonctions -->
-                <div class="lg:col-span-8 space-y-14">
-                    <!-- Paramètres entreprise -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" data-aos="fade-up">
-                        <div>
-                            <label class="block text-[8px] font-black uppercase tracking-[0.4em] text-neutral-400 mb-3">Effectif</label>
-                            <input type="number" id="input-effectif" value="20" min="1" class="field mono w-full px-4 py-4 text-lg font-bold">
-                        </div>
-                        <div>
-                            <label class="block text-[8px] font-black uppercase tracking-[0.4em] text-neutral-400 mb-3">Chiffre d'affaires (M€)</label>
-                            <input type="number" id="input-ca" value="4.0" step="0.1" min="0.1" class="field mono w-full px-4 py-4 text-lg font-bold">
-                        </div>
-                        <div>
-                            <label class="block text-[8px] font-black uppercase tracking-[0.4em] text-neutral-400 mb-3">Secteur — optionnel</label>
-                            <select id="input-secteur" class="field mono w-full px-4 py-4 text-sm font-bold uppercase">
-                                <option>Négoce & distribution</option>
-                                <option>Services & conseil</option>
-                                <option>E-commerce & retail</option>
-                                <option>Autre secteur</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Fonctions -->
-                    <div id="fonctions" class="space-y-6"></div>
-                </div>
-
-                <!-- Colonne estimation -->
-                <div class="lg:col-span-4">
-                    <div class="lg:sticky lg:top-32 bg-[#0a0a0a] text-white p-8 md:p-10" data-aos="fade-left">
-                        <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-500 mb-6">Votre estimation</p>
-
-                        <div class="flex justify-between items-baseline border-b border-neutral-800 pb-4 mb-4">
-                            <span class="text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-500">Effectif</span>
-                            <span class="mono text-2xl font-bold" id="est-effectif">20</span>
-                        </div>
-                        <div class="flex justify-between items-baseline border-b border-neutral-800 pb-4 mb-8">
-                            <span class="text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-500">CA</span>
-                            <span class="mono text-2xl font-bold"><span id="est-ca">4,0</span> M€</span>
-                        </div>
-
-                        <div class="mb-6">
-                            <div class="flex items-baseline gap-3">
-                                <span class="mono text-5xl md:text-6xl font-black tracking-tighter" id="est-ebitda">+0 €</span>
-                                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-neutral-500">d'EBITDA<br>par an</span>
-                            </div>
-                        </div>
-
-                        <p class="mono text-[10px] leading-relaxed text-neutral-400 mb-8">
-                            soit&nbsp;<strong class="text-white" id="est-jours">0 jours</strong>&nbsp;de capacité récupérés par an, à effectif constant ·&nbsp;
-                            <strong class="text-white" id="est-marge">+0,0 pt</strong>&nbsp;de marge
-                        </p>
-
-                        <p class="text-[10px] text-neutral-500 leading-relaxed mb-8" id="hint-choix">
-                            Passez une fonction sur « Externaliser » ou « Automatiser » pour voir son impact.
-                        </p>
-
-                        <a href="#" id="btn-reserver" class="cta-btn flex items-center justify-between bg-white text-[#0a0a0a] px-6 py-4 text-[9px] font-black uppercase tracking-[0.25em] w-full mb-3">
-                            <span class="italic">Réserver l'audit — 30 min</span>
-                            <span class="mono text-lg">→</span>
-                        </a>
-                        <p class="text-[9px] text-neutral-500 mt-4 leading-relaxed">
-                            Audit de 30 min · visio · gratuit · sans engagement
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-16 border-t border-black/10 pt-8" data-aos="fade-up">
-                <p class="mono text-[9px] text-neutral-400 leading-relaxed max-w-3xl">
-                    Hypothèses indicatives : jour chargé 250 € · automatisation = 80 % de la valeur du temps convertie en EBITDA · externalisation = 40 % (nette de la prestation) · estimation plafonnée à 5 % de votre CA. Chaque entreprise mérite son propre chiffrage : c'est l'objet de l'audit de 30 minutes.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Déjà livré -->
+    <!-- CE QUE NOUS CHIFFRONS -->
     <section class="bg-[#0a0a0a] text-white py-24 md:py-40 px-6 md:px-24 overflow-hidden">
         <div class="max-w-screen-2xl mx-auto">
             <div class="flex flex-col gap-6 mb-16 md:mb-24" data-aos="fade-up">
-                <p class="mono text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-500">Déjà livré</p>
-                <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] italic max-w-5xl">
-                    Le simulateur dit « ce que ça pourrait donner ».
-                    <span class="text-neutral-500">Voilà ce que ça a donné.</span>
+                <p class="mono text-[10px] font-bold uppercase tracking-[0.5em] text-neutral-500">Ce que nous chiffrons</p>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.92] italic max-w-4xl">
+                    Six opérations, un seul <span class="text-neutral-500">arbitrage</span>.
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
-                <div class="border-t border-neutral-800 pt-10 pr-4" data-aos="fade-up">
-                    <p class="mono text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-500 mb-6">Grossiste alimentaire B2B</p>
-                    <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-tight mb-6 italic">
-                        Les devis WhatsApp deviennent des PDF envoyés, sans saisie
-                    </h3>
-                    <p class="text-neutral-400 text-sm leading-relaxed mb-8 max-w-md">
-                        Les commandes arrivent en vrac sur WhatsApp. Le système les transforme en devis PDF mis en forme et envoyés — le commercial vend, le système administre.
-                    </p>
-                    <p class="mono text-sm font-bold text-white">300+ demandes de devis par mois — devis envoyé en moins d'une minute, 24h/24.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div class="page-card border border-neutral-800 p-8" data-aos="fade-up">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-500 mb-6">01</p>
+                    <h3 class="text-xl md:text-2xl font-black uppercase tracking-tighter italic mb-4">Facturation</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Émission, rapprochement, relances, suivi des règlements.</p>
                 </div>
-
-                <div class="border-t border-neutral-800 pt-10 pr-4" data-aos="fade-up" data-aos-delay="100">
-                    <p class="mono text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-500 mb-6">Société de services</p>
-                    <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-tight mb-6 italic">
-                        Notes de frais lues automatiquement, contrôle URSSAF passé
-                    </h3>
-                    <p class="text-neutral-400 text-sm leading-relaxed mb-8 max-w-md">
-                        Chaque justificatif est lu, extrait et classé à son arrivée. Le dossier de contrôle se constitue en continu, au lieu d'une course aux pièces la veille de l'échéance.
-                    </p>
-                    <p class="mono text-sm font-bold text-white">1 000+ justificatifs par mois — contrôle URSSAF passé avec succès.</p>
+                <div class="page-card border border-neutral-800 p-8" data-aos="fade-up" data-aos-delay="50">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-500 mb-6">02</p>
+                    <h3 class="text-xl md:text-2xl font-black uppercase tracking-tighter italic mb-4">Devis & Commandes</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Création, traitement, transmission, suivi.</p>
                 </div>
-
-                <div class="border-t border-neutral-800 pt-10 pr-4 md:col-span-2" data-aos="fade-up" data-aos-delay="150">
-                    <p class="mono text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-500 mb-6">E-commerce & production</p>
-                    <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-tight mb-6 italic max-w-3xl">
-                        Commande → production → livraison, orchestrées de bout en bout
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <p class="text-neutral-400 text-sm leading-relaxed max-w-md">
-                            Chaque commande déclenche la production, l'étiquetage et le suivi de livraison sans ressaisie. L'équipe absorbe la croissance sans grossir.
-                        </p>
-                        <p class="mono text-sm font-bold text-white">800+ commandes par mois, 3 pays — à équipe constante.</p>
-                    </div>
+                <div class="page-card border border-neutral-800 p-8" data-aos="fade-up" data-aos-delay="100">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-500 mb-6">03</p>
+                    <h3 class="text-xl md:text-2xl font-black uppercase tracking-tighter italic mb-4">Administration</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Documents, formulaires, saisie et classement.</p>
                 </div>
-            </div>
-
-            <div class="mt-16" data-aos="fade-up">
-                <a href="/demos" class="mono text-xs font-bold uppercase tracking-[0.3em] underline underline-offset-8 hover:opacity-60 transition-opacity">
-                    Voir le portfolio complet — six systèmes en production, en avant/après →
-                </a>
+                <div class="page-card border border-neutral-800 p-8" data-aos="fade-up">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-500 mb-6">04</p>
+                    <h3 class="text-xl md:text-2xl font-black uppercase tracking-tighter italic mb-4">Relation Client</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Emails entrants, qualification, réponses de premier niveau.</p>
+                </div>
+                <div class="page-card border border-neutral-800 p-8" data-aos="fade-up" data-aos-delay="50">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-500 mb-6">05</p>
+                    <h3 class="text-xl md:text-2xl font-black uppercase tracking-tighter italic mb-4">Reporting</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Collecte, consolidation et génération des tableaux.</p>
+                </div>
+                <div class="page-card border border-neutral-800 p-8" data-aos="fade-up" data-aos-delay="100">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-500 mb-6">06</p>
+                    <h3 class="text-xl md:text-2xl font-black uppercase tracking-tighter italic mb-4">Opérations</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Transfert d'informations entre vos outils et déclenchement automatique des actions.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Pourquoi trois destins -->
+    <!-- GARDEZ CE QUI A DE LA VALEUR -->
     <section class="py-24 md:py-40 px-6 md:px-24 bg-white">
         <div class="max-w-screen-2xl mx-auto">
             <div class="flex flex-col gap-6 mb-16 md:mb-24 max-w-4xl" data-aos="fade-up">
-                <p class="mono text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400">Pourquoi trois destins</p>
-                <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] italic">
-                    On ne vend pas une religion de l'automatisation. <span class="text-outline">On vend un arbitrage.</span>
+                <p class="mono text-[10px] font-bold uppercase tracking-[0.5em] text-neutral-400">Gardez ce qui a de la valeur</p>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.92] italic">
+                    Toutes les tâches ne doivent pas <span class="text-outline">être automatisées</span>.
                 </h2>
                 <p class="text-neutral-500 text-sm md:text-base leading-relaxed">
-                    Certaines fonctions méritent de rester dans vos murs : elles portent votre relation client. D'autres méritent une équipe externe dédiée. Et beaucoup — la facturation qui se relance, les devis qui se mettent en forme, les documents qui se classent — ne méritent ni votre temps ni même une externalisation : un système les fait tourner, à effectif constant.
-                </p>
-                <p class="text-neutral-500 text-sm md:text-base leading-relaxed">
-                    Notre métier : identifier lesquelles, construire les systèmes (IA + intégrations sur <strong>vos</strong> outils existants), et les faire tourner. <strong>Vous ne changez rien à vos outils. On s'ajoute.</strong>
+                    Notre travail consiste à déterminer où se trouve le meilleur arbitrage pour votre entreprise.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="border-t border-black pt-8" data-aos="fade-up">
                     <h4 class="text-xl md:text-3xl font-black uppercase tracking-tighter italic mb-4">Garder</h4>
-                    <p class="text-neutral-500 text-sm leading-relaxed">Ce qui crée le lien — la relation, la négociation, le jugement — reste chez vous.</p>
+                    <p class="text-neutral-500 text-sm leading-relaxed">Les décisions, la négociation, la relation humaine et ce qui nécessite votre expertise.</p>
                 </div>
                 <div class="border-t border-black pt-8" data-aos="fade-up" data-aos-delay="100">
                     <h4 class="text-xl md:text-3xl font-black uppercase tracking-tighter italic mb-4">Externaliser</h4>
-                    <p class="text-neutral-500 text-sm leading-relaxed">Ce qui mérite une équipe — le volume qui demande des mains — part chez un partenaire dédié.</p>
+                    <p class="text-neutral-500 text-sm leading-relaxed">Les opérations nécessitant encore une intervention humaine régulière et structurée.</p>
                 </div>
                 <div class="border-t border-black pt-8" data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="text-xl md:text-3xl font-black uppercase tracking-tighter italic mb-4">Automatiser <span class="text-neutral-300">✦</span></h4>
-                    <p class="text-neutral-500 text-sm leading-relaxed">Ce qui ne mérite personne — le répétitif sans jugement — tourne tout seul, jour et nuit.</p>
+                    <h4 class="text-xl md:text-3xl font-black uppercase tracking-tighter italic mb-4">Automatiser</h4>
+                    <p class="text-neutral-500 text-sm leading-relaxed">Les tâches répétitives, prévisibles et mesurables.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- L'étape suivante -->
-    <section class="py-24 md:py-40 px-6 md:px-24 bg-[#f0f0f0]">
-        <div class="max-w-screen-2xl mx-auto text-center flex flex-col items-center">
-            <div data-aos="fade-up">
-                <p class="mono text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-6">L'étape suivante</p>
-                <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] italic max-w-5xl mx-auto mb-8">
-                    L'audit de 30 minutes : votre simulateur, avec vos vrais chiffres.
-                </h2>
-                <p class="text-neutral-500 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-4">
-                    On reprend vos fonctions support une par une, avec vos volumes et vos salaires réels. <strong>Vous repartez avec le chiffrage — que vous travailliez avec nous ou pas.</strong>
-                </p>
-                <p class="text-neutral-500 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-12">
-                    Pas de démarchage derrière, pas d'engagement. Si l'automatisation ne vaut pas le coup chez vous, on vous le dit aussi : c'est le principe d'un arbitrage.
-                </p>
+    <!-- COMMENT ÇA SE PASSE -->
+    <section class="bg-[#f0f0f0] py-24 md:py-40 px-6 md:px-24">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="flex flex-col gap-6 mb-16 md:mb-24" data-aos="fade-up">
+                <p class="mono text-[10px] font-bold uppercase tracking-[0.5em] text-neutral-400">Comment ça se passe</p>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.92] italic">Quatre étapes, <span class="text-outline">zéro friction</span>.</h2>
             </div>
-            <div class="flex flex-col items-center gap-3" data-aos="fade-up" data-aos-delay="200">
-                <a href="#" id="btn-reserver-bottom" class="cta-btn bg-[#0a0a0a] text-white px-10 md:px-16 py-6 text-[10px] font-black uppercase tracking-[0.3em]">
-                    <span class="italic">Réserver l'audit — 30 min</span>
-                </a>
-                <p class="mono text-[10px] text-neutral-400">30 min · visio · gratuit</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="border-t border-black pt-8" data-aos="fade-up">
+                    <p class="mono text-[10px] font-bold opacity-30 mb-6">01</p>
+                    <h4 class="text-lg font-black uppercase tracking-tighter mb-3">Vous nous donnez le contexte</h4>
+                    <p class="text-neutral-500 text-sm leading-relaxed">Quelques informations sur votre entreprise, vos équipes et vos opérations.</p>
+                </div>
+                <div class="border-t border-black pt-8" data-aos="fade-up" data-aos-delay="100">
+                    <p class="mono text-[10px] font-bold opacity-30 mb-6">02</p>
+                    <h4 class="text-lg font-black uppercase tracking-tighter mb-3">Nous identifions les frictions</h4>
+                    <p class="text-neutral-500 text-sm leading-relaxed">Nous regardons où votre temps est consommé et quelles tâches peuvent être optimisées.</p>
+                </div>
+                <div class="border-t border-black pt-8" data-aos="fade-up" data-aos-delay="200">
+                    <p class="mono text-[10px] font-bold opacity-30 mb-6">03</p>
+                    <h4 class="text-lg font-black uppercase tracking-tighter mb-3">Nous chiffrons</h4>
+                    <p class="text-neutral-500 text-sm leading-relaxed">Volumes, fréquence, temps mobilisé et potentiel d'économie.</p>
+                </div>
+                <div class="border-t border-black pt-8" data-aos="fade-up" data-aos-delay="300">
+                    <p class="mono text-[10px] font-bold opacity-30 mb-6">04</p>
+                    <h4 class="text-lg font-black uppercase tracking-tighter mb-3">Nous proposons</h4>
+                    <p class="text-neutral-500 text-sm leading-relaxed">Une feuille de route claire : garder · externaliser · automatiser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- L'AUDIT COMMENCE ICI -->
+    <section class="py-24 md:py-44 px-6 md:px-24 bg-white">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="text-center flex flex-col items-center" data-aos="fade-up">
+                <p class="mono text-[10px] font-bold uppercase tracking-[0.5em] text-neutral-400 mb-8">L'audit commence ici</p>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.92] italic max-w-4xl mb-10">
+                    Pas besoin de changer votre CRM.
+                    Pas besoin de remplacer vos logiciels.
+                    Pas besoin de <span class="text-outline">préparer un dossier</span>.
+                </h2>
+                <p class="text-neutral-500 font-medium leading-relaxed max-w-xl mb-12">
+                    Donnez-nous simplement votre contexte.
+                </p>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <a href="/audit/formulaire" class="cta-btn bg-[#0a0a0a] text-white px-10 md:px-16 py-6 text-[10px] font-black uppercase tracking-[0.3em]">
+                        Chiffrer mes fonctions avec un expert <span class="italic">→</span>
+                    </a>
+                    <a href="https://calendly.com/azizbenhassine270/audit-ia-gratuit" target="_blank" rel="noopener noreferrer" id="btn-reserver-bottom" class="cta-btn border border-black px-10 md:px-16 py-6 text-[10px] font-black uppercase tracking-[0.3em]">
+                        Réserver l'audit — 30 min
+                    </a>
+                </div>
+                <p class="mono text-[10px] text-neutral-400 mt-8">30 min · Visio · Gratuit · Sans engagement</p>
             </div>
         </div>
     </section>
@@ -373,211 +329,48 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/33646433503" target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-8 right-8 z-[200] flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95"
+       style="background-color: #25D366;"
+       title="Contactez-nous sur WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="28" height="28">
+            <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.663 4.61 1.81 6.516L4 29l7.703-1.781A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.97 0-3.82-.54-5.41-1.48l-.387-.23-4.573 1.057 1.087-4.457-.252-.405A9.953 9.953 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.47-7.47c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.85 1.2 3.05c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.67.62.7.22 1.34.19 1.84.11.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.27-.2-.57-.35z"/>
+        </svg>
+    </a>
+
     <script>
-        // ============================================================
-        // CONFIG
-        // ============================================================
+        AOS.init({ duration: 1000, once: false, mirror: true, easing: 'ease-out-cubic' });
+
         const CALENDLY_URL = 'https://calendly.com/azizbenhassine270/audit-ia-gratuit';
         const API_URL = '/api/audit';
 
-        // Hypothèses de l'estimation
-        const JR_CHARGEE = 250;           // € / jour chargé
-        const H_PAR_JOUR = 7;            // heures travaillées par jour
-        const TX_AUTO = 0.8;             // automatisation = 80% de la valeur du temps
-        const TX_EXT = 0.4;              // externalisation = 40% (nette de la prestation)
-        const CAP_PCT_CA = 0.05;         // estimation plafonnée à 5% du CA
-
-        // ============================================================
-        // DONNÉES : 6 fonctions support
-        // ============================================================
-        const FONCTIONS = [
-            { id: 'facturation',  nom: 'Facturation & relances clients',   h: 5.7, desc: "Émission, suivi, relances d'impayés." },
-            { id: 'devis',        nom: 'Devis & propositions',             h: 7.6, desc: "Saisie, mise en forme, envoi, suivi." },
-            { id: 'fournisseurs', nom: 'Factures fournisseurs',            h: 4.7, desc: "Réception, saisie, rapprochement." },
-            { id: 'paie',         nom: 'Paie & administratif RH',          h: 3.8, desc: "Variables, absences, contrats." },
-            { id: 'emails',       nom: 'Emails entrants & relation client', h: 6.6, desc: "Tri, réponses niveau 1, routage." },
-            { id: 'reporting',    nom: 'Reporting',                        h: 2.8, desc: "Collecte des chiffres, tableaux, envoi." }
-        ];
-
-        const CHOIX = {
-            garder:       { label: 'Garder',          statut: 'Statu quo — temps interne inchangé.' },
-            externaliser: { label: 'Externaliser',    statut: 'Externalisé — 40 % de la valeur du temps convertie en EBITDA.' },
-            automatiser:  { label: 'Automatiser ✦',   statut: 'Automatisé — 80 % de la valeur du temps convertie en EBITDA.' }
-        };
-
-        const state = {
-            effectif: 20,
-            ca: 4.0,
-            secteur: 'Négoce & distribution',
-            choix: Object.fromEntries(FONCTIONS.map(f => [f.id, 'garder']))
-        };
-
-        const fmtInt = n => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(n));
-
-        // ============================================================
-        // RENDERING
-        // ============================================================
-        function statutHTML(id, choix) {
-            return `<p class="mono text-[10px] text-neutral-500 mt-4" id="statut-${id}">${CHOIX[choix].statut}</p>`;
-        }
-
-        function renderFonctions() {
-            const container = document.getElementById('fonctions');
-            container.innerHTML = FONCTIONS.map((f, i) => `
-                <div class="func-card border-t border-black/10 pt-8 pb-2 px-1" data-aos="fade-up" data-aos-delay="${i * 50}">
-                    <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-                        <div class="flex gap-6 items-center">
-                            <span class="mono text-[10px] font-bold opacity-20">${String(i + 1).padStart(2, '0')}</span>
-                            <div>
-                                <h3 class="text-lg md:text-2xl font-black uppercase tracking-tighter leading-tight">${f.nom}</h3>
-                                <p class="text-neutral-400 text-xs mt-1">${f.desc}</p>
-                            </div>
-                        </div>
-                        <span class="mono text-xs font-bold bg-neutral-100 px-3 py-1.5 rounded-full">≈ ${String(f.h).replace('.', ',')} h/sem</span>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        ${Object.entries(CHOIX).map(([key, c], j) => `
-                            <button class="choice-btn mono text-[10px] font-bold uppercase tracking-[0.15em] px-5 py-3 ${j === 0 ? 'active' : ''}"
-                                    data-fonction="${f.id}" data-choix="${key}">${c.label}</button>
-                        `).join('')}
-                    </div>
-                    <p class="mono text-[10px] text-neutral-500 mt-4" id="statut-${f.id}">${CHOIX.garder.statut}</p>
-                    <div class="hidden" data-gain="${f.id}"></div>
-                </div>
-            `).join('');
-
-            document.querySelectorAll('.choice-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const fct = btn.dataset.fonction;
-                    const choix = btn.dataset.choix;
-                    state.choix[fct] = choix;
-                    updateChoicesUI();
-                    recalcule();
-                });
-            });
-        }
-
-        function updateChoicesUI() {
-            document.querySelectorAll('.choice-btn').forEach(btn => {
-                btn.classList.toggle('active', state.choix[btn.dataset.fonction] === btn.dataset.choix);
-            });
-            FONCTIONS.forEach(f => {
-                document.getElementById('statut-' + f.id).innerHTML = CHOIX[state.choix[f.id]].statut;
-            });
-        }
-
-        // ============================================================
-        // CALCUL
-        // ============================================================
-        function recalcule() {
-            state.effectif = Math.max(1, parseInt(document.getElementById('input-effectif').value, 10) || 1);
-            state.ca = parseFloat(document.getElementById('input-ca').value) || 0;
-            state.secteur = document.getElementById('input-secteur').value;
-
-            let ebitdaTotal = 0;
-            let joursTotal = 0;
-
-            FONCTIONS.forEach(f => {
-                const heuresAn = f.h * 52;
-                const jours = heuresAn / H_PAR_JOUR;
-                const valeur = jours * JR_CHARGEE;
-                const c = state.choix[f.id];
-                if (c === 'automatiser') { ebitdaTotal += valeur * TX_AUTO; joursTotal += jours; }
-                else if (c === 'externaliser') { ebitdaTotal += valeur * TX_EXT; joursTotal += jours; }
-            });
-
-            const caEur = state.ca * 1e6;
-            const cap = caEur * CAP_PCT_CA;
-            if (ebitdaTotal > cap && cap > 0) ebitdaTotal = cap;
-            const joursArr = Math.round(joursTotal);
-            const marge = caEur > 0 ? (ebitdaTotal / caEur) * 100 : 0;
-
-            // Affichage
-            document.getElementById('est-effectif').textContent = fmtInt(state.effectif);
-            document.getElementById('est-ca').textContent = state.ca.toFixed(1).replace('.', ',');
-            document.getElementById('est-ebitda').textContent = `+${fmtInt(ebitdaTotal)} €`;
-            document.getElementById('est-jours').textContent = `${joursArr} jour${joursArr > 1 ? 's' : ''}`;
-            document.getElementById('est-marge').textContent = `+${(marge).toFixed(1).replace('.', ',')} pt`;
-
-            document.getElementById('hint-choix').innerHTML =
-                ebitdaTotal > 0
-                    ? 'Estimation plafonnée à 5 % de votre CA. Chaque entreprise mérite son propre chiffrage.'
-                    : 'Passez une fonction sur « Externaliser » ou « Automatiser » pour voir son impact.';
-
-            state.resultat = {
-                ebitda: Math.round(ebitdaTotal),
-                jours: joursArr,
-                marge: +(marge).toFixed(1),
-                caEur, capEnabled: cap > 0
-            };
-        }
-
-        // ============================================================
-        // ENVOI -> API SMTP + ouverture Calendly
-        // ============================================================
-        function auditPayload() {
-            return {
+        // Réserve Calendly : signale la réservation par email puis ouvre Calendly
+        async function reserver(e) {
+            e.preventDefault();
+            const payload = {
+                type: 'calendly',
                 page: location.pathname,
                 timestamp: new Date().toISOString(),
-                effectif: state.effectif,
-                ca: state.ca,
-                secteur: state.secteur,
-                fonctions: FONCTIONS.map(f => ({
-                    id: f.id,
-                    nom: f.nom,
-                    heuresSem: f.h,
-                    desc: f.desc,
-                    choix: state.choix[f.id],
-                    choixLabel: CHOIX[state.choix[f.id]].label
-                })),
-                estimation: state.resultat || { ebitda: 0, jours: 0, marge: 0 },
                 calendly: CALENDLY_URL
             };
-        }
-
-        async function envoyerEtReserver(e) {
-            e.preventDefault();
-            recalcule();
-            const payload = auditPayload();
-
-            const btns = document.querySelectorAll('#btn-reserver, #btn-reserver-bottom');
-            btns.forEach(b => { b.style.opacity = '0.55'; b.style.pointerEvents = 'none'; });
-
             window.open(CALENDLY_URL, '_blank');
-
             try {
-                const res = await fetch(API_URL, {
+                await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-                const json = await res.json().catch(() => ({}));
-                if (!json.ok) console.error('API audit en échec', json);
             } catch (err) {
-                console.error('Erreur envoi audit', err);
-            } finally {
-                setTimeout(() => {
-                    btns.forEach(b => { b.style.opacity = '1'; b.style.pointerEvents = 'auto'; });
-                }, 1500);
+                console.error('Erreur envoi réservation', err);
             }
         }
 
-        // ============================================================
-        // UI
-        // ============================================================
-        function bind() {
-            document.getElementById('input-effectif').addEventListener('input', recalcule);
-            document.getElementById('input-ca').addEventListener('input', recalcule);
-            document.getElementById('input-secteur').addEventListener('change', recalcule);
-document.getElementById('btn-reserver').addEventListener('click', envoyerEtReserver);
-document.getElementById('btn-reserver-bottom').addEventListener('click', envoyerEtReserver);
-        }
+        document.getElementById('btn-reserver').addEventListener('click', reserver);
+        const btnBottom = document.getElementById('btn-reserver-bottom');
+        if (btnBottom) btnBottom.addEventListener('click', reserver);
 
-        // ============================================================
-        // INIT
-        // ============================================================
-        AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic' });
-
+        // Custom Cursor
         const cursor = document.getElementById('cursor');
         let cursorX = 0, cursorY = 0, targetX = 0, targetY = 0;
         const cursorEnabled = window.matchMedia('(pointer: fine) and (min-width: 768px)').matches;
@@ -644,12 +437,7 @@ document.getElementById('btn-reserver-bottom').addEventListener('click', envoyer
                 renderer.setSize(window.innerWidth, window.innerHeight);
             }
         });
-
-        window.onload = () => { initThree(); };
-
-        renderFonctions();
-        bind();
-        recalcule();
+        window.onload = initThree;
     </script>
 </body>
 </html>

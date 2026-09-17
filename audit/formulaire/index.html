@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAFEE | Demande d'audit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #fcfcfc;
+            color: #0a0a0a;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .grain-bg {
+            position: fixed;
+            inset: 0;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 50;
+        }
+        section { position: relative; z-index: 10; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .cta-btn { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .cta-btn:hover { transform: scale(1.03); }
+        .cta-btn:active { transform: scale(0.97); }
+
+        .field-group { border: 1px solid rgba(0,0,0,0.08); }
+        .field-label {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            margin-bottom: 14px;
+        }
+        .input {
+            width: 100%;
+            background: transparent;
+            border: 1px solid rgba(10,10,10,0.2);
+            padding: 18px 20px;
+            font-size: 15px;
+            color: #0a0a0a;
+            outline: none;
+            transition: border-color 0.3s ease;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 0;
+        }
+        .input:focus { border-color: #0a0a0a; }
+        select.input {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230a0a0a' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            padding-right: 48px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 8px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .checkbox-item:hover { background-color: rgba(10,10,10,0.03); }
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: #0a0a0a;
+            flex-shrink: 0;
+        }
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .radio-item input[type="radio"] { accent-color: #0a0a0a; width: 16px; height: 16px; }
+
+        .error-msg { display: none; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: #dc2626; }
+        .errored .error-msg { display: block; }
+        .errored .input { border-color: #dc2626; }
+
+        #confirmation { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="grain-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-[100] p-4 sm:p-6 md:p-12 flex justify-between items-center mix-blend-difference text-white">
+        <a href="/" class="text-lg sm:text-xl md:text-3xl font-black tracking-tighter italic uppercase">CAFEE<span class="text-neutral-500">.</span></a>
+        <div class="flex flex-wrap justify-end gap-4 sm:gap-6 md:gap-10 text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em]">
+            <a href="/" class="nav-link relative">Accueil</a>
+            <a href="/audit" class="nav-link relative">Audit</a>
+            <a href="/demos" class="nav-link relative">Démos</a>
+            <a href="https://calendly.com/azizbenhassine270/audit-ia-gratuit" target="_blank" rel="noopener noreferrer" class="nav-link relative">Briefing</a>
+        </div>
+    </nav>
+
+    <!-- HEADER FORMULAIRE -->
+    <section class="px-6 md:px-24 pt-40 md:pt-56 pb-16 md:pb-24 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <p class="mono text-[10px] font-bold uppercase tracking-[0.5em] text-neutral-400 mb-8" data-aos="fade-up">Demande d'audit</p>
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.92] italic mb-8" data-aos="fade-up" data-aos-delay="50">
+                Parlons de votre <span class="text-outline" style="-webkit-text-stroke:1px #0a0a0a;color:transparent;">entreprise</span>.
+            </h1>
+            <p class="text-neutral-500 font-medium text-sm md:text-base leading-relaxed max-w-xl" data-aos="fade-up" data-aos-delay="100">
+                Quelques informations suffisent pour préparer l'audit.
+            </p>
+        </div>
+    </section>
+
+    <!-- FORMULAIRE -->
+    <section class="px-6 md:px-24 pb-28 md:pb-40 bg-white">
+        <div class="max-w-4xl mx-auto">
+
+            <form id="audit-form" novalidate class="space-y-16 md:space-y-24">
+
+                <!-- VOTRE ENTREPRISE -->
+                <div class="field-group p-8 md:p-12" data-aos="fade-up">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-10">01 — Votre entreprise</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div id="f-nom">
+                            <label class="field-label" for="entreprise-nom">Nom de l'entreprise *</label>
+                            <input class="input" type="text" id="entreprise-nom" placeholder="Ex. Dupont Distribution" data-required="true">
+                            <p class="error-msg mt-2">Champ requis</p>
+                        </div>
+                        <div>
+                            <label class="field-label" for="entreprise-site">Site internet</label>
+                            <input class="input" type="text" id="entreprise-site" placeholder="https://...">
+                        </div>
+                        <div id="f-secteur">
+                            <label class="field-label" for="entreprise-secteur">Secteur d'activité *</label>
+                            <select class="input" id="entreprise-secteur" data-required="true">
+                                <option value="" disabled selected>Sélectionner</option>
+                                <option>Négoce & distribution</option>
+                                <option>Services & conseil</option>
+                                <option>E-commerce & retail</option>
+                                <option>Industrie</option>
+                                <option>BTP / Construction</option>
+                                <option>Immobilier</option>
+                                <option>Autre</option>
+                            </select>
+                            <p class="error-msg mt-2">Sélectionnez un secteur</p>
+                        </div>
+                        <div>
+                            <label class="field-label" for="entreprise-effectif">Nombre de collaborateurs</label>
+                            <input class="input" type="number" id="entreprise-effectif" min="1" placeholder="Ex. 25">
+                        </div>
+                        <div>
+                            <label class="field-label" for="entreprise-ca">Chiffre d'affaires annuel</label>
+                            <input class="input" type="text" id="entreprise-ca" placeholder="Ex. 2 500 000 €">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VOS OPÉRATIONS -->
+                <div class="field-group p-8 md:p-12" data-aos="fade-up">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-10">02 — Vos opérations</p>
+
+                    <div id="f-operations">
+                        <label class="field-label">Quelles fonctions vous prennent le plus de temps ? *</label>
+                        <div class="border border-black/10 mb-6">
+                            <label class="checkbox-item"><input type="checkbox" name="operations" value="Facturation & relances"><span class="text-sm">Facturation & relances</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="operations" value="Devis & propositions"><span class="text-sm">Devis & propositions</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="operations" value="Factures fournisseurs"><span class="text-sm">Factures fournisseurs</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="operations" value="Administration RH"><span class="text-sm">Administration RH</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="operations" value="Emails & relation client"><span class="text-sm">Emails & relation client</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="operations" value="Reporting"><span class="text-sm">Reporting</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="operations" value="Gestion des commandes"><span class="text-sm">Gestion des commandes</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="operations" value="Autre"><span class="text-sm">Autre</span></label>
+                        </div>
+                        <p class="error-msg mb-2">Cochez au moins une fonction</p>
+                    </div>
+
+                    <div>
+                        <label class="field-label" for="operations-description">Décrivez brièvement votre fonctionnement actuel</label>
+                        <textarea class="input min-h-[120px] resize-y" id="operations-description" placeholder="Ex. Les commandes arrivent principalement par email et WhatsApp puis sont ressaisies manuellement..."></textarea>
+                    </div>
+                </div>
+
+                <!-- VOS OUTILS -->
+                <div class="field-group p-8 md:p-12" data-aos="fade-up">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-10">03 — Vos outils</p>
+
+                    <div class="space-y-10">
+                        <div>
+                            <label class="field-label" for="outils-liste">Quels outils utilisez-vous actuellement ?</label>
+                            <input class="input" type="text" id="outils-liste" placeholder="Ex. Excel, WhatsApp, Gmail, Sage, Salesforce...">
+                        </div>
+                        <div id="f-automatisation">
+                            <label class="field-label">Avez-vous déjà automatisé certaines tâches ? *</label>
+                            <div class="flex flex-wrap gap-8">
+                                <label class="radio-item"><input type="radio" name="automatisation" value="Oui"><span class="text-sm">Oui</span></label>
+                                <label class="radio-item"><input type="radio" name="automatisation" value="Non"><span class="text-sm">Non</span></label>
+                                <label class="radio-item"><input type="radio" name="automatisation" value="Partiellement"><span class="text-sm">Partiellement</span></label>
+                            </div>
+                            <p class="error-msg mt-2">Sélectionnez une option</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VOS COORDONNÉES -->
+                <div class="field-group p-8 md:p-12" data-aos="fade-up">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-10">04 — Vos coordonnées</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div id="f-contact-nom">
+                            <label class="field-label" for="contact-nom">Prénom & nom *</label>
+                            <input class="input" type="text" id="contact-nom" placeholder="Votre nom" data-required="true">
+                            <p class="error-msg mt-2">Champ requis</p>
+                        </div>
+                        <div id="f-contact-fonction">
+                            <label class="field-label" for="contact-fonction">Fonction *</label>
+                            <input class="input" type="text" id="contact-fonction" placeholder="Dirigeant, Directeur administratif, COO..." data-required="true">
+                            <p class="error-msg mt-2">Champ requis</p>
+                        </div>
+                        <div id="f-contact-email">
+                            <label class="field-label" for="contact-email">Email professionnel *</label>
+                            <input class="input" type="email" id="contact-email" placeholder="vous@entreprise.com" data-required="true">
+                            <p class="error-msg mt-2">Email invalide</p>
+                        </div>
+                        <div>
+                            <label class="field-label" for="contact-tel">Téléphone</label>
+                            <input class="input" type="text" id="contact-tel" placeholder="+33 ...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OBJECTIF -->
+                <div class="field-group p-8 md:p-12" data-aos="fade-up">
+                    <p class="mono text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-10">05 — Objectif</p>
+
+                    <div class="space-y-10">
+                        <div>
+                            <label class="field-label" for="objectif-description">Qu'aimeriez-vous améliorer en priorité ?</label>
+                            <textarea class="input min-h-[110px] resize-y" id="objectif-description" placeholder="Décrivez votre objectif..."></textarea>
+                        </div>
+                        <div>
+                            <label class="field-label">Cochez ce qui correspond</label>
+                            <div class="border border-black/10">
+                                <label class="checkbox-item"><input type="checkbox" name="priorites" value="Réduire le temps administratif"><span class="text-sm">Réduire le temps administratif</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="priorites" value="Absorber plus de volume"><span class="text-sm">Absorber plus de volume</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="priorites" value="Réduire les erreurs"><span class="text-sm">Réduire les erreurs</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="priorites" value="Réduire les coûts"><span class="text-sm">Réduire les coûts</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="priorites" value="Automatiser certaines opérations"><span class="text-sm">Automatiser certaines opérations</span></label>
+                                <label class="checkbox-item"><input type="checkbox" name="priorites" value="Je veux simplement identifier les opportunités"><span class="text-sm">Je veux simplement identifier les opportunités</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA FINAL -->
+                <div class="text-center flex flex-col items-center" data-aos="fade-up">
+                    <button type="submit" id="btn-submit" class="cta-btn bg-[#0a0a0a] text-white px-10 md:px-16 py-6 text-[10px] font-black uppercase tracking-[0.3em] w-full md:w-auto">
+                        Envoyer ma demande d'audit <span class="italic">→</span>
+                    </button>
+                    <p class="mono text-[9px] text-neutral-400 mt-8 max-w-md leading-relaxed">
+                        Vos informations restent confidentielles et sont utilisées uniquement pour préparer votre audit.
+                    </p>
+                    <p class="mono text-[9px] text-neutral-400 mt-4">
+                        Vous préférez réserver directement ? <a href="https://calendly.com/azizbenhassine270/audit-ia-gratuit" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">Réserver l'audit — 30 min</a>
+                    </p>
+                </div>
+            </form>
+
+            <!-- CONFIRMATION -->
+            <div id="confirmation" class="text-center py-24 md:py-32" data-aos="fade-up">
+                <p class="mono text-[10px] font-bold uppercase tracking-[0.5em] text-neutral-400 mb-10">Confirmation</p>
+                <h2 class="text-4xl md:text-7xl font-black uppercase italic tracking-tighter leading-[0.95] mb-10">Demande<br>reçue<span class="text-neutral-300">.</span></h2>
+                <p class="text-neutral-500 text-sm md:text-base font-medium leading-relaxed max-w-xl mx-auto mb-6">
+                    Merci. Nous avons bien reçu les informations concernant votre entreprise.
+                </p>
+                <p class="text-neutral-500 text-sm md:text-base font-medium leading-relaxed max-w-xl mx-auto mb-14">
+                    Nous allons les examiner avant notre échange afin que les 30 minutes soient consacrées directement aux opérations qui présentent le plus de potentiel.
+                </p>
+                <p class="mono text-[10px] font-bold uppercase tracking-[0.5em] italic">À très bientôt.</p>
+                <div class="mt-16 flex flex-col md:flex-row items-center justify-center gap-6">
+                    <a href="https://calendly.com/azizbenhassine270/audit-ia-gratuit" target="_blank" rel="noopener noreferrer" class="cta-btn bg-[#0a0a0a] text-white px-10 md:px-14 py-5 text-[10px] font-black uppercase tracking-[0.3em]">
+                        Réserver l'audit — 30 min
+                    </a>
+                    <a href="/audit" class="cta-btn border border-black px-10 md:px-14 py-5 text-[10px] font-black uppercase tracking-[0.3em]">
+                        Retour à l'audit
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="p-10 border-t border-black/5 bg-white">
+        <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] md:text-[8px] font-black uppercase tracking-[0.25em] md:tracking-[0.4em] opacity-30 text-center md:text-left">
+            <div>© CAFEE AGENCY 2026 — ARCHITECTURE LOGICIELLE</div>
+            <div class="italic">ÎLE-DE-FRANCE, FRANCE</div>
+            <div class="text-right">PURE CODE. HIGH EXTRACTION.</div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/33646433503" target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-8 right-8 z-[200] flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95"
+       style="background-color: #25D366;"
+       title="Contactez-nous sur WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="28" height="28">
+            <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.663 4.61 1.81 6.516L4 29l7.703-1.781A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.97 0-3.82-.54-5.41-1.48l-.387-.23-4.573 1.057 1.087-4.457-.252-.405A9.953 9.953 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.47-7.47c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.85 1.2 3.05c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.67.62.7.22 1.34.19 1.84.11.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.27-.2-.57-.35z"/>
+        </svg>
+    </a>
+
+    <script>
+        AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic' });
+
+        const API_URL = '/api/audit';
+        const CALENDLY_URL = 'https://calendly.com/azizbenhassine270/audit-ia-gratuit';
+        const form = document.getElementById('audit-form');
+        const confirmation = document.getElementById('confirmation');
+        const btnSubmit = document.getElementById('btn-submit');
+
+        function setError(groupId, invalid) {
+            const g = document.getElementById(groupId);
+            if (!g) return;
+            g.classList.toggle('errored', invalid);
+        }
+
+        function valider() {
+            let ok = true;
+
+            const nom = document.getElementById('entreprise-nom');
+            const nomInvalid = !nom.value.trim();
+            setError('f-nom', nomInvalid);
+            if (nomInvalid) ok = false;
+
+            const secteur = document.getElementById('entreprise-secteur');
+            const secteurInvalid = !secteur.value;
+            setError('f-secteur', secteurInvalid);
+            if (secteurInvalid) ok = false;
+
+            const ops = Array.from(form.querySelectorAll('input[name="operations"]:checked')).map(c => c.value);
+            setError('f-operations', ops.length === 0);
+            if (ops.length === 0) ok = false;
+
+            const auto = form.querySelector('input[name="automatisation"]:checked');
+            setError('f-automatisation', !auto);
+            if (!auto) ok = false;
+
+            const cNom = document.getElementById('contact-nom');
+            const cNomInvalid = !cNom.value.trim();
+            setError('f-contact-nom', cNomInvalid);
+            if (cNomInvalid) ok = false;
+
+            const cFonction = document.getElementById('contact-fonction');
+            const cFonctionInvalid = !cFonction.value.trim();
+            setError('f-contact-fonction', cFonctionInvalid);
+            if (cFonctionInvalid) ok = false;
+
+            const cEmail = document.getElementById('contact-email');
+            const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const cEmailInvalid = !cEmail.value.trim() || !emailRe.test(cEmail.value.trim());
+            setError('f-contact-email', cEmailInvalid);
+            if (cEmailInvalid) ok = false;
+
+            return ok;
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!valider()) {
+                document.querySelector('.errored')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            const payload = {
+                type: 'formulaire',
+                page: location.pathname,
+                timestamp: new Date().toISOString(),
+                entreprise: {
+                    nom: document.getElementById('entreprise-nom').value.trim(),
+                    site: document.getElementById('entreprise-site').value.trim(),
+                    secteur: document.getElementById('entreprise-secteur').value,
+                    effectif: document.getElementById('entreprise-effectif').value.trim(),
+                    caAnnuel: document.getElementById('entreprise-ca').value.trim()
+                },
+                contact: {
+                    nom: document.getElementById('contact-nom').value.trim(),
+                    fonction: document.getElementById('contact-fonction').value.trim(),
+                    email: document.getElementById('contact-email').value.trim(),
+                    telephone: document.getElementById('contact-tel').value.trim()
+                },
+                operations: {
+                    fonctions: Array.from(form.querySelectorAll('input[name="operations"]:checked')).map(c => c.value),
+                    description: document.getElementById('operations-description').value.trim()
+                },
+                outils: {
+                    liste: document.getElementById('outils-liste').value.trim(),
+                    automatisation: form.querySelector('input[name="automatisation"]:checked')?.value || ''
+                },
+                objectif: {
+                    description: document.getElementById('objectif-description').value.trim(),
+                    priorites: Array.from(form.querySelectorAll('input[name="priorites"]:checked')).map(c => c.value)
+                }
+            };
+
+            btnSubmit.disabled = true;
+            btnSubmit.style.opacity = '0.5';
+            btnSubmit.textContent = 'Envoi en cours...';
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) throw new Error('send failed');
+            } catch (err) {
+                console.error('Erreur envoi formulaire', err);
+                btnSubmit.disabled = false;
+                btnSubmit.style.opacity = '1';
+                btnSubmit.innerHTML = 'Envoyer ma demande d\'audit <span class="italic">→</span>';
+                alert('Une erreur est survenue lors de l\'envoi. Merci de réessayer.');
+                return;
+            }
+
+            form.style.display = 'none';
+            confirmation.style.display = 'block';
+            confirmation.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    </script>
+</body>
+</html>
