@@ -1,7 +1,22 @@
 services:
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USER=sirh.contact2023@gmail.com
+      - SMTP_PASS=gozqplkchdhiylck
+      - MAIL_TO=sofyen.elmnasria@gmail.com,azizbenhassine270@gmail.com
+    restart: unless-stopped
+
   web:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "3030:80"
+    depends_on:
+      - api
+    restart: unless-stopped
